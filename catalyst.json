@@ -1,0 +1,12 @@
+{
+  "app_sail": [
+    {
+      "name": "api",
+      "source": "apps/api"
+    },
+    {
+      "name": "ai_engine",
+      "source": "services/ai-engine"
+    }
+  ]
+}

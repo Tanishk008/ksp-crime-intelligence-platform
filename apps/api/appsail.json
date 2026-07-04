@@ -1,0 +1,11 @@
+{
+    "type": "python",
+    "name": "api",
+    "stack": "python312",
+    "memory": 512,
+    "env": {
+        "PYTHONPATH": ".",
+        "DB_NAME": "ksp_intelligence"
+    },
+    "command": "python -m uvicorn main:app --host 0.0.0.0 --port $X_ZOHO_CATALYST_PORT"
+}
