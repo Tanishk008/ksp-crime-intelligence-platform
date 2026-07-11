@@ -1,6 +1,6 @@
 from sqlalchemy import Column, String, DateTime, ForeignKey, text, Text, Boolean, JSON
 from sqlalchemy.orm import relationship
-from .base import Base
+from .base import Base, UPDATE_TIMESTAMP_DEFAULT
 from .user import generate_uuid
 
 class Conversation(Base):
@@ -10,7 +10,7 @@ class Conversation(Base):
     user_id = Column(String(36), ForeignKey("users.id"))
     case_id = Column(String(36), ForeignKey("cases.id"), nullable=True)
     created_at = Column(DateTime, server_default=text("CURRENT_TIMESTAMP"))
-    last_activity = Column(DateTime, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    last_activity = Column(DateTime, server_default=UPDATE_TIMESTAMP_DEFAULT)
 
     user = relationship("User")
     case = relationship("Case", back_populates="conversations")

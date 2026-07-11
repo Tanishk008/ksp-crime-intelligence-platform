@@ -1,6 +1,6 @@
 from sqlalchemy import Column, String, Date, Text, DateTime, ForeignKey, text
 from sqlalchemy.orm import relationship
-from .base import Base
+from .base import Base, UPDATE_TIMESTAMP_DEFAULT
 from .user import generate_uuid
 
 class Case(Base):
@@ -17,7 +17,7 @@ class Case(Base):
     incident_address = Column(Text)
     narrative = Column(Text)
     created_at = Column(DateTime, server_default=text("CURRENT_TIMESTAMP"))
-    updated_at = Column(DateTime, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    updated_at = Column(DateTime, server_default=UPDATE_TIMESTAMP_DEFAULT)
 
     station = relationship("Station", back_populates="cases")
     assigned_officer = relationship("User")

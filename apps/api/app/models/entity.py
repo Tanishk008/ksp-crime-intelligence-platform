@@ -1,6 +1,6 @@
 from sqlalchemy import Column, String, Numeric, DateTime, ForeignKey, text
 from sqlalchemy.orm import relationship
-from .base import Base
+from .base import Base, UPDATE_TIMESTAMP_DEFAULT
 from .user import generate_uuid
 
 class Entity(Base):
@@ -11,7 +11,7 @@ class Entity(Base):
     entity_type = Column(String(50), nullable=False)
     neo4j_node_id = Column(String(100))
     created_at = Column(DateTime, server_default=text("CURRENT_TIMESTAMP"))
-    updated_at = Column(DateTime, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    updated_at = Column(DateTime, server_default=UPDATE_TIMESTAMP_DEFAULT)
 
     aliases = relationship("EntityAlias", back_populates="entity", cascade="all, delete-orphan")
     case_links = relationship("CaseEntityLink", back_populates="entity")

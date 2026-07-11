@@ -7,6 +7,7 @@ class Settings(BaseSettings):
     APP_CORS_ORIGINS: str = "http://localhost:5173"
     
     # DB (MySQL in Zoho Catalyst)
+    DB_PROVIDER: str = "sqlite"
     DB_USER: str = "root"
     DB_PASSWORD: str = "root"
     DB_HOST: str = "localhost"
